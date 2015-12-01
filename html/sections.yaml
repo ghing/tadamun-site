@@ -1,0 +1,19 @@
+intro:
+  slug: intro
+  title: Introdocution
+  background_image: 'img/Hero_Image.jpg'
+schools:
+  slug: schools
+healthcare:
+  slug: healthcare
+work:
+  slug: work
+highway:
+  slug: highway        
+quotes:
+  slug: quotes        
+context:
+  title: "Context"      
+  slug: context
+  background_image: 'img/IMG_7819.jpg'        
+  text: Lorem ipsum sadads asd as afsfsa asdasd gafsaf afsaf  asad DA         
