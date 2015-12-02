@@ -1,7 +1,11 @@
 <section id="{{ section.slug }}" class="section section--{{ section.slug }}">
     <div class="section__inner section__inner--{{ section.slug }}" style="background-image: url({{ section.background_image }})">
         <h2 class="section__heading">{{ section.title }}</h2>
-        <div class="context-text">{{ section.text }}</div>
+        <div class="context-text">
+            {{#each section.text }}
+            {{{ this }}}
+            {{/each}}
+        </div>
         <div class="stats-wrapper">
             <ul class="stats">
                 {{#each statistics}}

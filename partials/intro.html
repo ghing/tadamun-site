@@ -1,8 +1,8 @@
 <section id="intro" class="section section--intro">
     <div class="section__inner section__inner--{{ section.slug }}" style="background-image: url({{ section.background_image }})">
-        <h1 class="headline">{{ headline }}</h1>
+        <h1 class="headline">{{ section.title }}</h1>
         <div class="intro-text">
-            {{#each intro_text }}
+            {{#each section.text }}
             <p>{{ this }}</p>
             {{/each }}
         </div>    

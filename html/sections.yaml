@@ -1,19 +1,26 @@
 intro:
   slug: intro
-  title: Introdocution
+  title: Displaced Lives
   background_image: 'img/Hero_Image.jpg'
+  text:
+    - Foo bar
 schools:
   slug: schools
+  title: Distance and time to schools has increased.
+  title_pictogram: 'img/schools.svg'
+  location: Istabl Antar
+  narrative: Nearest school was 2km away with safe walkways. Time to destination was 14 minutes
 healthcare:
   slug: healthcare
 work:
   slug: work
 highway:
-  slug: highway        
+  slug: highway
 quotes:
-  slug: quotes        
+  slug: quotes
 context:
-  title: "Context"      
+  title: "Context"
   slug: context
-  background_image: 'img/IMG_7819.jpg'        
-  text: Lorem ipsum sadads asd as afsfsa asdasd gafsaf afsaf  asad DA         
+  background_image: 'img/IMG_7819.jpg'
+  text:
+    - Lorem ipsum sadads asd as afsfsa asdasd gafsaf afsaf  asad DA
