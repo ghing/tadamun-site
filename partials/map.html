@@ -3,13 +3,19 @@
     {{> map_overlay_distance }}  
     {{> map_overlay_school_points }}
     {{> map_overlay_hospital_points }}
+    {{> map_overlay_quotes_past }}
+    {{> map_overlay_quotes_present }}
     <h2 class="section__heading section__heading--map">
+        {{#if section.heading_pictogram }}
         <img class="heading-pictogram" src="{{ section.heading_pictogram }}">
+        {{/if}}
         <div class="section__heading__text">{{ section.title }}</div> 
     </h2>
+    {{#if section.narrative}}
     <div class="map-narrative map-narrative--{{ section.slug }}">
         <h3 class="map-narrative__heading">{{ section.location }}</h3>
         <div class="map-narrative__text">{{ section.narrative }}</div>
     </div>
+    {{/if}}
   </div>
 </section>

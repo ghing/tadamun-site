@@ -129,21 +129,66 @@ html, body {
   padding-top: 10px;
 }
 
-// HACK
 
 .section__inner--schools-istabl-antwar,
 .section__inner--schools-masakin-uthman {
-  svg:nth-child(3) {
+  svg:nth-child(3),
+  svg:nth-child(4),
+  svg:nth-child(5) {
     display: none;
   }
 }
 
 .section__inner--healthcare-istabl-antwar,
 .section__inner--healthcare-masakin-uthman {
-  svg:nth-child(2) {
+  svg:nth-child(2), 
+  svg:nth-child(4),
+  svg:nth-child(5) {
     display: none;
   }
 }
+
+.section--same-problems-istabl-antwar,
+.section--same-problems-masakin-uthman {
+  // HACK
+  height: 820px;
+}
+
+.section__inner--same-problems-istabl-antwar,
+.section__inner--same-problems-masakin-uthman {
+  // HACK: Hide distance line because it overlaps quote bubbles
+  svg:nth-child(1) path:last-child {
+    display: none;
+  }
+
+  // HACK: Override default size because there's no icon and it looks weird
+  .section__heading {
+    border: none;
+    float: none !important;
+    width: 100% !important;
+  }
+}
+
+.section__inner--same-problems-istabl-antwar {
+  svg:nth-child(1) path:last-child {
+    display: none;
+  }
+
+  svg:nth-child(2),
+  svg:nth-child(3),
+  svg:nth-child(5) {
+    display: none;
+  }
+}
+
+.section__inner--same-problems-masakin-uthman {
+  svg:nth-child(2),
+  svg:nth-child(3),
+  svg:nth-child(4) {
+    display: none;
+  }
+}
+
 
 .map-narrative {
   position: absolute;
@@ -204,11 +249,16 @@ html, body {
   to { opacity: 1; }
 }
 
+.section--highway,
+.section__inner--highway {
+  // HACK: Fixed height to override default of 100%
+  height: 500px;
+}
+
 .section__inner--highway {
   background-image: url('../img/highway.jpg');
   background-position: 100% 0;
   background-repeat: repeat-x;
-  height: 500px;
 }
 
 .section__inner--highway.animated {
