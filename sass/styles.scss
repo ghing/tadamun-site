@@ -130,6 +130,42 @@ html, body {
 }
 
 // HACK
+@mixin parallax() {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@mixin parallax-layer() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin parallax-layer-base() {
+  transform: translateZ(0);
+}
+
+@mixin parallax-layer-back() {
+  transform: translateZ(-1px);
+}
+
+.parallax {
+  @include parallax();
+}
+
+.section--map-layers {
+  //position: fixed;
+  // HACK
+  //top: 683px;
+}
+
+.section__inner--map-layers {
+  //position: fixed;
+}
 
 .section__inner--schools-istabl-antwar,
 .section__inner--schools-masakin-uthman {

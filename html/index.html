@@ -7,10 +7,13 @@
     <body>
         {{> intro section=sections.intro }} 
 
+        <div class="parallax">
+        {{> map_layers }}
         {{> map section=sections.[schools-istabl-antwar] }}
         {{> map section=sections.[schools-masakin-uthman] }}
         {{> map section=sections.[healthcare-istabl-antwar] }}
         {{> map section=sections.[healthcare-masakin-uthman] }}
+        </div>
 
         {{> highway section=sections.highway }}
         {{> context section=sections.context }}
