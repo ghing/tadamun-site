@@ -6,12 +6,14 @@
     {{> map_overlay_quotes_past }}
     {{> map_overlay_quotes_present }}
     <div class="distance-label">40km</div>
+    {{#if section.title }}
     <h2 class="section__heading section__heading--map">
         {{#if section.heading_pictogram }}
         <img class="heading-pictogram" src="{{ section.heading_pictogram }}">
         {{/if}}
         <div class="section__heading__text">{{ section.title }}</div> 
     </h2>
+    {{/if}}
     {{#if section.narrative}}
     <div class="map-narrative map-narrative--{{ section.slug }}">
         <h3 class="map-narrative__heading">{{ section.location }}</h3>

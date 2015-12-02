@@ -175,6 +175,10 @@ html, body {
 
 .section__inner--schools-istabl-antwar,
 .section__inner--schools-masakin-uthman {
+  svg circle.st0 {
+    fill: #fff;
+  }
+
   svg circle.st1 {
     fill: #EB5B45;
   }
@@ -185,6 +189,9 @@ html, body {
   svg circle.st0 {
     fill: #EB5B45;
   }
+  svg circle.st1 {
+    fill: #fff;
+  }
 }
 
 .section--same-problems-istabl-antwar,
@@ -192,16 +199,6 @@ html, body {
   // HACK
   height: 820px;
 }
-
-/*
-.section__inner--same-problems-istabl-antwar,
-.section__inner--same-problems-masakin-uthman {
-  // HACK: Hide distance line because it overlaps quote bubbles
-  svg:nth-child(1) path:last-child {
-    display: none;
-  }
-}
-*/
 
 .section__inner--map {
   svg:nth-child(1) path:last-child {
@@ -220,9 +217,15 @@ html, body {
 .section__inner--same-problems-masakin-uthman {
   // HACK: Override default size because there's no icon and it looks weird
   .section__heading {
-    border: none;
     float: none !important;
-    width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 10px;
+    width: 35%;
+  }
+
+  .section__heading__text {
+    width: 100%;
   }
 }
 
