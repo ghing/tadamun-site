@@ -3,9 +3,7 @@ intro:
   title: Displaced Lives
   background_image: 'img/Hero_Image.jpg'
   text:
-    - There are over 400 "unsafe slums" across Egypt, almost all forced to move to remote desert cities.
-    - Since 2008, at least 14,000 people from Istabl Antar have been relocated to new housing blocks 40 kilometers away on the desert periphery of  6th of October City.
-    - The new area, known as Maskin Uthman, although recently constructed, replicates many of the same problems residents faced before.  Standard of living is **no better than before**.
+    - There are over 400 "unsafe slums" across Egypt, almost all forced to move to remote desert cities. Since 2008, at least 14,000 people from Istabl Antar have been relocated to new housing blocks 40 kilometers away on the desert periphery of  6th of October City. The new area, known as Maskin Uthman, although recently constructed, replicates many of the same problems residents faced before.  Standard of living is **no better than before**.
 schools:
   slug: schools
   title: Distance and time to schools has increased.
