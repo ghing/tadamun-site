@@ -20,7 +20,7 @@ var Waypoint = window.Waypoint;
             .selectAll('.section__inner')
               .classed('animated', true);
         },
-        offset: 100
+        offset: '90%' 
       });
     }
   }
