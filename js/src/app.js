@@ -16,7 +16,9 @@ var Waypoint = window.Waypoint;
       this.waypoints.highway = new Waypoint({
         element: options.containers.highway,
         handler: function(direction) {
-          console.log("HIGHWAY");
+          d3.select(this.element)
+            .selectAll('.section__inner')
+              .classed('animated', true);
         },
         offset: 0
       });

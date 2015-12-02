@@ -96,6 +96,27 @@ html, body {
   font-size: $font-size-l;
 }
 
+// Highway section
+
+@keyframes animation-scroll-background {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.section__inner--highway {
+  background-image: url('../img/highway.jpg');
+  background-position: 100% 0;
+  background-repeat: repeat-x;
+  height: 500px;
+}
+
+.section__inner--highway.animated {
+  animation: animation-scroll-background 6s linear 1s;
+}
+
+
+// Context section
+
 .context-text {
   @include grid-column(6);
   box-sizing: border-box;
