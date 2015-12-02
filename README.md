@@ -36,3 +36,10 @@ To do
 * Render map elements from data using D3
 * Map tiles from tile service
 * Animate drawing of distance line in first section
+* Add context for government policy, rationale for relocating people living in informal housing
+  * Most new social housing is in "new cities"
+* Consider language of "informal communities" vs. "slums"
+  * Rationale for using the language is that this is the terminology used by the government
+* Visual ideas
+  * Emphasize walk over highway, danger/challenges that it brings (e.g. background intro video of crossing)
+
