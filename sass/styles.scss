@@ -10,7 +10,8 @@ $color-heading: #fff;
 $color-body: #fff;
 
 $font-size-xl: 60pt;
-$font-size-l: 25pt;
+$font-size-l2: 40pt;
+$font-size-l: 20pt;
 $font-size-body: 17pt;
 $font-size-s: 12pt;
 
@@ -153,7 +154,8 @@ html, body {
 }
 
 .stat__value {
-  font-size: $font-size-xl;
+  font-size: $font-size-l2;
+  font-weight: bold;
 }
 
 .stat__label {
