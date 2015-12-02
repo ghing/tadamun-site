@@ -6,8 +6,7 @@ Microsite about the relocation of former residents of the  Stabl Antar neighborh
 To do
 -----
 
+* Animate drawing of distance line
 
 Credits
 -------
-
-* Establ Antar image by Omnia Arfin from [The School](http://panorama.madamasr.com/2014/the-school-by-omnia-arfin/)

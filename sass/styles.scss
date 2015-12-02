@@ -77,6 +77,29 @@ html, body {
   @include map-vectors();
 }
 
+.distance-label {
+  // HACK: Hide by default
+  display: none;
+
+  margin-left: auto;
+  margin-right: auto;
+  color: $color-body;
+  top: 400px;
+  left: 50%;
+  font-size: $font-size-xl;
+  text-align: center;
+  position: absolute;
+  font-family: $font-face-headline-black;
+}
+
+// HACK: Show in distance slide
+.section--distance {
+  .distance-label {
+    display: block;
+  }
+}
+
+
 .section__inner--intro,
 .section__inner--highway {
   display: -ms-flexbox;
@@ -130,6 +153,7 @@ html, body {
 }
 
 
+.section__inner--distance,
 .section__inner--schools-istabl-antwar,
 .section__inner--schools-masakin-uthman {
   svg:nth-child(3),
@@ -139,6 +163,7 @@ html, body {
   }
 }
 
+.section__inner--distance,
 .section__inner--healthcare-istabl-antwar,
 .section__inner--healthcare-masakin-uthman {
   svg:nth-child(2), 
@@ -148,19 +173,51 @@ html, body {
   }
 }
 
+.section__inner--schools-istabl-antwar,
+.section__inner--schools-masakin-uthman {
+  svg circle.st1 {
+    fill: #EB5B45;
+  }
+}
+
+.section__inner--healthcare-istabl-antwar,
+.section__inner--healthcare-masakin-uthman {
+  svg circle.st0 {
+    fill: #EB5B45;
+  }
+}
+
 .section--same-problems-istabl-antwar,
 .section--same-problems-masakin-uthman {
   // HACK
   height: 820px;
 }
 
+/*
 .section__inner--same-problems-istabl-antwar,
 .section__inner--same-problems-masakin-uthman {
   // HACK: Hide distance line because it overlaps quote bubbles
   svg:nth-child(1) path:last-child {
     display: none;
   }
+}
+*/
 
+.section__inner--map {
+  svg:nth-child(1) path:last-child {
+    display: none;
+  }
+}
+
+.section__inner--distance {
+  svg:nth-child(1) path:last-child {
+    display: block !important;
+  }
+}
+
+.section__inner--distance,
+.section__inner--same-problems-istabl-antwar,
+.section__inner--same-problems-masakin-uthman {
   // HACK: Override default size because there's no icon and it looks weird
   .section__heading {
     border: none;
@@ -218,6 +275,7 @@ html, body {
 .map-narrative__text {
   font-size: 14px;
 }
+
 
 // Introduction
 
