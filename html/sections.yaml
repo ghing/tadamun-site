@@ -4,12 +4,18 @@ intro:
   background_image: 'img/Hero_Image.jpg'
   text:
     - There are over 400 "unsafe slums" across Egypt, almost all forced to move to remote desert cities. Since 2008, at least 14,000 people from Istabl Antar have been relocated to new housing blocks 40 kilometers away on the desert periphery of  6th of October City. The new area, known as Maskin Uthman, although recently constructed, replicates many of the same problems residents faced before.  Standard of living is **no better than before**.
-schools:
-  slug: schools
-  title: Distance and time to schools has increased.
+schools-istabl-antwar:
+  slug: schools-istable-antwar
+  title: Children now face more difficulties in accessing schools.
   title_pictogram: 'img/schools.svg'
-  location: Istabl Antar
-  narrative: Nearest school was 2km away with safe walkways. Time to destination was 14 minutes
+  location: "Old area: Istabl Antar"
+  narrative: 6 local schools were within a 5 km distance (the closest of which was 1 km away) and accessible via safe walkways. Total walking time was around 15 minutes.        
+schools-masakin-uthman:
+  slug: schools-masakin-uthman
+  title: Children now face more difficulties in accessing schools.
+  title_pictogram: 'img/schools.svg'
+  location: "New area: Masakin Uthman" 
+  narrative: Only 2 local schools are within a 5 km distance, requiring children to cross a highway and vacant desert land on foot. Total walking time is around 40 minutes.
 healthcare:
   slug: healthcare
 work:
