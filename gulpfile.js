@@ -12,6 +12,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var metadata = require('metalsmith-metadata');
 var path = require('path');
+var marked = require('marked');
 
 var paths = {
   sass: './sass/*.scss',
@@ -68,13 +69,27 @@ function compileVendor(watch) {
   return rebundle(bundler, 'vendor.js');
 }
 
+function markdownifyContext(opts) {
+  return function(files, metalsmith, done) {
+    var metadata = metalsmith.metadata();
+    
+    metadata.sections.intro.text = metadata.sections.intro.text.map(function(t) {
+      return marked(t);
+    });
+    
+    done();
+  }
+}
+
 function buildHTML(cb, watch) {
   var ms = Metalsmith(__dirname)
     .source(path.dirname(paths.html)) 
     .use(metadata({
+      site: 'site.yaml',
       sections: 'sections.yaml',
       statistics: 'statistics.yaml',
     }))
+    .use(markdownifyContext())
     .use(inplace({
       engine: 'handlebars',
       partials: 'partials'
