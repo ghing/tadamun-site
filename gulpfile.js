@@ -76,6 +76,9 @@ function markdownifyContext(opts) {
     metadata.sections.intro.text = metadata.sections.intro.text.map(function(t) {
       return marked(t);
     });
+    metadata.sections.context.text = metadata.sections.context.text.map(function(t) {
+      return marked(t);
+    });
     
     done();
   }
