@@ -1,0 +1,15 @@
+<section id="{{ section.slug }}" class="section section--map section--{{ section.slug }}">
+  <div class="section__inner section__inner--{{ section.slug }} section__inner--map" style="">
+    {{> map_overlay_distance }}  
+    {{> map_overlay_school_points }}
+    {{> map_overlay_hospital_points }}
+    <h2 class="section__heading section__heading--map">
+        <img class="heading-pictogram" src="{{ section.heading_pictogram }}">
+        <div class="section__heading__text">{{ section.title }}</div> 
+    </h2>
+    <div class="map-narrative map-narrative--{{ section.slug }}">
+        <h3 class="map-narrative__heading">{{ section.location }}</h3>
+        <div class="map-narrative__text">{{ section.narrative }}</div>
+    </div>
+  </div>
+</section>

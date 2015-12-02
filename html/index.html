@@ -6,7 +6,12 @@
     </head>
     <body>
         {{> intro section=sections.intro }} 
-        <section class="section section--two"></section>
+
+        {{> map section=sections.[schools-istabl-antwar] }}
+        {{> map section=sections.[schools-masakin-uthman] }}
+        {{> map section=sections.[healthcare-istabl-antwar] }}
+        {{> map section=sections.[healthcare-masakin-uthman] }}
+
         {{> highway section=sections.highway }}
         {{> context section=sections.context }}
 

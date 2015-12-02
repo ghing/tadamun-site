@@ -4,7 +4,7 @@
 $font-face-headline-black: romain_bp_headline_blackblack, serif;
 $font-face-body: Georgia, serif;
 
-$section-width: 100%;
+$section-padding: 4em;
 
 $color-heading: #fff;
 $color-body: #fff;
@@ -41,6 +41,16 @@ html, body {
 .section__heading {
   @include grid-row;
   @include grid-column(12);
+  position: relative;
+}
+
+.section__heading--map {
+  width: 50%;
+  border-top: 1px solid $color-heading;
+  border-bottom: 1px solid $color-heading;
+  font-size: $font-size-l;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .section__inner {
@@ -49,8 +59,26 @@ html, body {
   background-size: cover;
 }
 
+@mixin map-vectors() {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
-.section__inner--intro {
+.section__inner--map {
+  text-align: left;
+  padding-left: $section-padding;
+  padding-right: $section-padding;
+  background-image: url('../img/map-background.jpg');
+}
+
+.section__inner--map > svg {
+  @include map-vectors();
+}
+
+.section__inner--intro,
+.section__inner--highway {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -60,23 +88,97 @@ html, body {
   -webkit-box-align: center;
 
   align-items: center; 
-  justify-content: flex-end;
 
   text-align: center;
   flex-direction: column;
+}
+
+.section__inner--intro {
+  justify-content: flex-end;
 
   background-position-y: -180px;
   background-repeat: no-repeat;
 }
 
+.section__inner--highway {
+  justify-content: center;
+  padding-left: $section-padding;
+  padding-right: $section-padding; 
+}
+
 .section__inner--context {
   text-align: left;
   height: 100%;
-  padding: 4em;
+  padding: $section-padding;
 }
 
 .heading {
   font-family: $font-face-headline-black;
+}
+
+.heading-pictogram {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.section__heading__text {
+  width: 80%;
+  display: inline-block;
+  vertical-align: top;
+  // HACK
+  padding-top: 10px;
+}
+
+// HACK
+
+.section--map {
+  // HACK: Temporary space to make concept clearer
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section__inner--schools-istabl-antwar,
+.section__inner--schools-masakin-uthman {
+  svg:nth-child(3) {
+    display: none;
+  }
+}
+
+.section__inner--healthcare-istabl-antwar,
+.section__inner--healthcare-masakin-uthman {
+  svg:nth-child(2) {
+    display: none;
+  }
+}
+
+.map-narrative {
+  position: absolute;
+  width: 250px;
+}
+
+.map-narrative--schools-istabl-antwar,
+.map-narrative--healthcare-istabl-antwar,
+{
+  // TODO: Relative sizes, or render with JavaScript relative to geographic features
+  right: 100px; 
+  bottom: 210px;
+}
+
+.map-narrative--schools-masakin-uthman,
+.map-narrative--healthcare-masakin-uthman,
+{
+  left: 240px; 
+  bottom: 5%;
+}
+
+.map-narrative__heading {
+  padding-top: 0;
+  font-size: 18px;
+}
+
+.map-narrative__text {
+  font-size: 14px;
 }
 
 // Introduction
@@ -104,6 +206,11 @@ html, body {
   to { background-position: 0 0; }
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .section__inner--highway {
   background-image: url('../img/highway.jpg');
   background-position: 100% 0;
@@ -113,6 +220,15 @@ html, body {
 
 .section__inner--highway.animated {
   animation: animation-scroll-background 6s linear 1s;
+}
+
+.section__inner--highway .bigtext {
+  visibility: none;
+}
+
+.section__inner--highway.animated .bigtext {
+  visibility: visible;
+  animation: fadein 10s linear 1s;
 }
 
 
@@ -165,8 +281,8 @@ html, body {
 // Footer
 
 .footer {
-  padding-left: 4em;
-  padding-right: 4em;
+  padding-left: $section-padding;
+  padding-right: $section-padding;
   padding-top: 1em;
   padding-bottom: 1em;
 }
