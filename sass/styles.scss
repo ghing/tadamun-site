@@ -108,7 +108,6 @@ html, body {
 
 .section__inner--context {
   text-align: left;
-  height: 100%;
   padding: $section-padding;
 }
 
@@ -131,12 +130,6 @@ html, body {
 }
 
 // HACK
-
-.section--map {
-  // HACK: Temporary space to make concept clearer
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 .section__inner--schools-istabl-antwar,
 .section__inner--schools-masakin-uthman {
