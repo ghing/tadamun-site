@@ -11,6 +11,8 @@ let Waypoint = window.Waypoint;
 
   class App {
     constructor(options) {
+      let app = this;
+
       this.options = options;
 
       this.waypoints = {};
@@ -40,6 +42,7 @@ let Waypoint = window.Waypoint;
         .selectAll('.section--map');
 
       mapSections.style('visibility', 'hidden');
+      this.hideMapLayers(['schools', 'healthcare-centers']);
       
       d3.select(options.containers.mapSections)
         .selectAll('.section--map')
@@ -54,11 +57,9 @@ let Waypoint = window.Waypoint;
                   mapSections.style('position', 'static');
                   // Hide all the sections 
                   mapSections.style('visibility', 'hidden');
+
                   // Stick and show this section
-                  d3.select(this.element)
-                    .style('visibility', 'visible')
-                    .style('position', 'fixed')
-                    .style('top', 0);
+                  app.displaySection(this.element);
                 }
               },
               offset: '100%'
@@ -74,10 +75,9 @@ let Waypoint = window.Waypoint;
                   mapSections.style('position', 'static');
                   // Hide all the sections
                   mapSections.style('visibility', 'hidden');
-                  d3.select(this.element)
-                    .style('visibility', 'visible')
-                    .style('position', 'fixed')
-                    .style('top', 0);
+
+                  // Stick and show this section
+                  app.displaySection(this.element);
                 }
               },
               offset: 'bottom-in-view'
@@ -85,8 +85,81 @@ let Waypoint = window.Waypoint;
           });
     }
 
+    displaySection(element) {
+      d3.select(element)
+        .style('visibility', 'visible')
+        .style('position', 'fixed')
+        .style('top', 0);
+
+      if (element.id == 'distance') {
+        this.showMapLayers(['distance']);
+        this.hideMapLayers(['healthcare-centers']);
+        this.hideMapLayers(['schools']);
+      }
+      else {
+        this.hideMapLayers(['distance']);
+      }
+
+      if (element.id == 'schools-istabl-antwar' ||
+          element.id == 'schools-masakin-uthman') {
+        this.hideMapLayers(['healthcare-centers']);
+        this.showMapLayers(['schools']);
+      }
+      else if (element.id == 'healthcare-istabl-antwar' ||
+          element.id == 'healthcare-masakin-uthman') {
+        this.hideMapLayers(['schools']);
+        this.showMapLayers(['healthcare-centers']);
+      }
+      else {
+        this.hideMapLayers(['schools']);
+        this.hideMapLayers(['healthcare-centers']);
+      }
+      
+      if (element.id == 'same-problems-istabl-antwar') {
+        // TODO: Handle this section 
+      }
+
+      if (element.id == "same-problems-masakin-uthman") {
+        // TODO: Handle this section
+      }
+    }
+
+    hideMapLayers(layers) {
+      let mapSVG = d3.select(this.options.containers.mapSVG);
+
+      layers.forEach(function(layerName) {
+        if (layerName == 'distance') {
+          mapSVG.select('#map-svg__distance')
+            .style('visibility', 'hidden');
+        }  
+        else if (layerName == 'schools') {
+          mapSVG.select('#map-svg__schools')
+            .style('visibility', 'hidden');
+        }
+        else if (layerName == 'healthcare-centers') {
+          mapSVG.select('#map-svg__healthcare-centers')
+            .style('visibility', 'hidden');
+        }
+      });
+    }
+
     showMapLayers(layers) {
-      // BOOKMARK
+      let mapSVG = d3.select(this.options.containers.mapSVG);
+
+      layers.forEach(function(layerName) {
+        if (layerName == 'distance') {
+          mapSVG.select('#map-svg__distance')
+            .style('visibility', 'visible');
+        }  
+        else if (layerName == 'schools') {
+          mapSVG.select('#map-svg__schools')
+            .style('visibility', 'visible');
+        }
+        else if (layerName == 'healthcare-centers') {
+          mapSVG.select('#map-svg__healthcare-centers')
+            .style('visibility', 'visible');
+        }
+      });
     }
   }
 

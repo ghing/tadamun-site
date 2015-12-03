@@ -186,56 +186,12 @@ html, body {
 .section--map-layers {
   width: 100vw;
   height: 100vh;
-  // HACK
-  //top: 683px;
 }
 
 .section__inner--map-layers {
-  //position: fixed;
   background-image: url('../img/map-background.jpg');
 }
 
-
-.section__inner--distance,
-.section__inner--schools-istabl-antwar,
-.section__inner--schools-masakin-uthman {
-  svg:nth-child(3),
-  svg:nth-child(4),
-  svg:nth-child(5) {
-    display: none;
-  }
-}
-
-.section__inner--distance,
-.section__inner--healthcare-istabl-antwar,
-.section__inner--healthcare-masakin-uthman {
-  svg:nth-child(2), 
-  svg:nth-child(4),
-  svg:nth-child(5) {
-    display: none;
-  }
-}
-
-.section__inner--schools-istabl-antwar,
-.section__inner--schools-masakin-uthman {
-  svg circle.st0 {
-    fill: #fff;
-  }
-
-  svg circle.st1 {
-    fill: #EB5B45;
-  }
-}
-
-.section__inner--healthcare-istabl-antwar,
-.section__inner--healthcare-masakin-uthman {
-  svg circle.st0 {
-    fill: #EB5B45;
-  }
-  svg circle.st1 {
-    fill: #fff;
-  }
-}
 
 .section--same-problems-istabl-antwar,
 .section--same-problems-masakin-uthman {
@@ -260,27 +216,6 @@ html, body {
     width: 100%;
   }
 }
-
-.section__inner--same-problems-istabl-antwar {
-  svg:nth-child(1) path:last-child {
-    display: none;
-  }
-
-  svg:nth-child(2),
-  svg:nth-child(3),
-  svg:nth-child(5) {
-    display: none;
-  }
-}
-
-.section__inner--same-problems-masakin-uthman {
-  svg:nth-child(2),
-  svg:nth-child(3),
-  svg:nth-child(4) {
-    display: none;
-  }
-}
-
 
 .map-narrative {
   position: absolute;
