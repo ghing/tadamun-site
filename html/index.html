@@ -7,16 +7,20 @@
     <body>
         {{> intro section=sections.intro }} 
 
-        <div class="parallax">
-        {{> map_layers }}
-        {{> map section=sections.[schools-istabl-antwar] }}
-        {{> map section=sections.[schools-masakin-uthman] }}
-        {{> map section=sections.[healthcare-istabl-antwar] }}
-        {{> map section=sections.[healthcare-masakin-uthman] }}
-        </div>
+        <div id="map-sections" class="map-sections">
+            {{> map_layers }}
+            {{> map section=sections.[distance] }}
+            {{> map section=sections.[schools-istabl-antwar] }}
+            {{> map section=sections.[schools-masakin-uthman] }}
+            {{> map section=sections.[healthcare-istabl-antwar] }}
+            {{> map section=sections.[healthcare-masakin-uthman] }}
 
-        {{> highway section=sections.highway }}
-        {{> context section=sections.context }}
+            {{> map section=sections.[same-problems-istabl-antwar]}}
+            {{> map section=sections.[same-problems-masakin-uthman]}}
+
+            {{> highway section=sections.highway }}
+            {{> context section=sections.context }}
+        </div>
 
         <footer class="footer">
           <div class="footer__inner">
@@ -30,6 +34,8 @@
         <script>
         (function(window, document, tadamun) {
           var containers = {
+            mapSections: document.getElementById('map-sections'),  
+            mapLayers: document.getElementById('map-layers'),
             highway: document.getElementById('highway')
           };
 
