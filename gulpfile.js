@@ -17,7 +17,7 @@ var marked = require('marked');
 var paths = {
   sass: './sass/*.scss',
   html: './html/*.html',
-  partials: './partials/*.html',
+  partials: './partials/*',
   metadata: './html/*.yaml',
   images: './img/*'
 };

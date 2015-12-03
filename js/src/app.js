@@ -42,7 +42,7 @@ let Waypoint = window.Waypoint;
         .selectAll('.section--map');
 
       mapSections.style('visibility', 'hidden');
-      this.hideMapLayers(['schools', 'healthcare-centers']);
+      this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
       
       d3.select(options.containers.mapSections)
         .selectAll('.section--map')
@@ -93,7 +93,7 @@ let Waypoint = window.Waypoint;
 
       if (element.id == 'distance') {
         this.showMapLayers(['distance']);
-        this.hideMapLayers(['healthcare-centers']);
+        this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
         this.hideMapLayers(['schools']);
       }
       else {
@@ -102,25 +102,21 @@ let Waypoint = window.Waypoint;
 
       if (element.id == 'schools-istabl-antwar' ||
           element.id == 'schools-masakin-uthman') {
-        this.hideMapLayers(['healthcare-centers']);
+        this.hideMapLayers(['healthcare-centers', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
         this.showMapLayers(['schools']);
       }
       else if (element.id == 'healthcare-istabl-antwar' ||
           element.id == 'healthcare-masakin-uthman') {
-        this.hideMapLayers(['schools']);
+        this.hideMapLayers(['schools', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
         this.showMapLayers(['healthcare-centers']);
       }
-      else {
-        this.hideMapLayers(['schools']);
-        this.hideMapLayers(['healthcare-centers']);
+      else if (element.id == 'same-problems-istabl-antwar') {
+        this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-masakin-uthman']);
+        this.showMapLayers(['quotes-istabl-antwar']);
       }
-      
-      if (element.id == 'same-problems-istabl-antwar') {
-        // TODO: Handle this section 
-      }
-
-      if (element.id == "same-problems-masakin-uthman") {
-        // TODO: Handle this section
+      else if (element.id == "same-problems-masakin-uthman") {
+        this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-istabl-antwar']);
+        this.showMapLayers(['quotes-masakin-uthman']);
       }
     }
 
@@ -140,6 +136,14 @@ let Waypoint = window.Waypoint;
           mapSVG.select('#map-svg__healthcare-centers')
             .style('visibility', 'hidden');
         }
+        else if (layerName == 'quotes-istabl-antwar') {
+          mapSVG.select('#map-svg__quotes-istabl-antwar')
+            .style('visibility', 'hidden');
+        }
+        else if (layerName == 'quotes-masakin-uthman') {
+          mapSVG.select('#map-svg__quotes-masakin-uthman')
+            .style('visibility', 'hidden');
+        }
       });
     }
 
@@ -157,6 +161,14 @@ let Waypoint = window.Waypoint;
         }
         else if (layerName == 'healthcare-centers') {
           mapSVG.select('#map-svg__healthcare-centers')
+            .style('visibility', 'visible');
+        }
+        else if (layerName == 'quotes-istabl-antwar') {
+          mapSVG.select('#map-svg__quotes-istabl-antwar')
+            .style('visibility', 'visible');
+        }
+        else if (layerName == 'quotes-masakin-uthman') {
+          mapSVG.select('#map-svg__quotes-masakin-uthman')
             .style('visibility', 'visible');
         }
       });
