@@ -28,6 +28,12 @@ The site can be regenerated in the `build` subdirectory using `gulp`:
 
     gulp
 
+Running the development server
+------------------------------
+
+To run a local webserver to view the site, run:
+
+    gulp serve
 
 To do
 -----
