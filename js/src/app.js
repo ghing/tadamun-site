@@ -12,6 +12,8 @@ let Waypoint = window.Waypoint;
   class App {
     constructor(options) {
       let app = this;
+      let mapSections = d3.select(options.containers.mapSections)
+        .selectAll('.section--map');
 
       this.options = options;
 
@@ -35,22 +37,37 @@ let Waypoint = window.Waypoint;
               .style('position', 'fixed')
               .style('top', 0);
           }
+          else {
+            // We're scrolling back up to the top.  Unstick the map layers so
+            // the user can see the intro section
+            d3.select(options.containers.mapLayers)
+              .style('position', 'static')
+              .style('top', 'auto');
+
+            mapSections.style('position', 'static');
+          }
         }
       });
 
-      let mapSections = d3.select(options.containers.mapSections)
-        .selectAll('.section--map');
 
       mapSections.style('visibility', 'hidden');
       this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
+
+      let firstMapSection = null;
       
       d3.select(options.containers.mapSections)
         .selectAll('.section--map')
-          .each(function() {
+          .each(function(d, i) {
+            var el = this;
+
+            if (i == 0) {
+              firstMapSection = el;
+            }
+
             // When scrolling down, and the top of a section hits the bottom
             // of the viewport ...
             let wp = new Waypoint({
-              element: this,
+              element: el,
               handler: function(direction) {
                 if (direction == 'down') {
                   // Unstick all the sections 
@@ -68,7 +85,7 @@ let Waypoint = window.Waypoint;
             // When scrolling up, and the bottom of a section enters the top
             // of the viewport ...
             let reverseWp = new Waypoint({
-              element: this,
+              element: el,
               handler: function(direction) {
                 if (direction == 'up') {
                   // Unstick all the sections
@@ -85,10 +102,10 @@ let Waypoint = window.Waypoint;
           });
     }
 
-    displaySection(element) {
+    displaySection(element, position='fixed') {
       d3.select(element)
         .style('visibility', 'visible')
-        .style('position', 'fixed')
+        .style('position', position)
         .style('top', 0);
 
       if (element.id == 'distance') {
