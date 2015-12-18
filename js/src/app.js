@@ -20,14 +20,20 @@ let Waypoint = window.Waypoint;
 
       this.waypoints = {};
 
+      // When the highway enters the viewport, start the animation
+      // Note that we detect when the #filler-1 element enters,
+      // rather than #highway
+      // due to the way we're making elements sticky
       this.waypoints.highway = new Waypoint({
-        element: options.containers.highway,
+        element: d3.select('#filler-1').node(), 
         handler: function(direction) {
-          d3.select(this.element)
-            .selectAll('.section__inner')
-              .classed('animated', true);
+          if (direction == 'down') {
+            d3.select(options.containers.highway)
+              .selectAll('.section__inner')
+                .classed('animated', true);
+          }
         },
-        offset: '90%' 
+        offset: '100%' 
       });
 
       this.waypoints.map = new Waypoint({
@@ -49,7 +55,6 @@ let Waypoint = window.Waypoint;
           }
         }
       });
-
 
       mapSections.style('visibility', 'hidden');
       this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
