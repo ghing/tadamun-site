@@ -13,6 +13,7 @@ var buffer = require('vinyl-buffer');
 var metadata = require('metalsmith-metadata');
 var path = require('path');
 var marked = require('marked');
+var ghPages = require('gulp-gh-pages');
 
 var paths = {
   sass: './sass/*.scss',
@@ -151,6 +152,11 @@ gulp.task('copyimages', ['buildhtml'], function() {
 gulp.task('copyfonts', ['buildhtml'], function() { 
   return gulp.src('./fonts/*')
     .pipe(gulp.dest('./build/fonts'));
+});
+
+gulp.task('deploy', ['default'], function() {
+  return gulp.src("./build/**/*")
+    .pipe(ghPages())
 });
 
 gulp.task('default', ['buildhtml', 'buildcss', 'buildjs', 'copyimages', 'copyfonts']);
