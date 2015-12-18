@@ -14,6 +14,7 @@ let Waypoint = window.Waypoint;
       let app = this;
       let mapSections = d3.select(options.containers.mapSections)
         .selectAll('.section--map');
+      let mapLayers = d3.select(options.containers.mapLayers);  
 
       this.options = options;
 
@@ -33,14 +34,14 @@ let Waypoint = window.Waypoint;
         element: options.containers.mapSections,
         handler: function(direction) {
           if (direction === 'down') {
-            d3.select(options.containers.mapLayers)
+            mapLayers
               .style('position', 'fixed')
               .style('top', 0);
           }
           else {
             // We're scrolling back up to the top.  Unstick the map layers so
             // the user can see the intro section
-            d3.select(options.containers.mapLayers)
+            mapLayers
               .style('position', 'static')
               .style('top', 'auto');
 
@@ -53,53 +54,65 @@ let Waypoint = window.Waypoint;
       mapSections.style('visibility', 'hidden');
       this.hideMapLayers(['schools', 'healthcare-centers', 'quotes-istabl-antwar', 'quotes-masakin-uthman']);
 
-      let firstMapSection = null;
-      
-      d3.select(options.containers.mapSections)
-        .selectAll('.section--map')
-          .each(function(d, i) {
-            var el = this;
+      mapSections.each(function(d, i) {
+        var el = this;
 
-            if (i == 0) {
-              firstMapSection = el;
+        // When scrolling down, and the top of a section hits the bottom
+        // of the viewport ...
+        let wp = new Waypoint({
+          element: el,
+          handler: function(direction) {
+            if (direction == 'down') {
+              // Unstick all the sections 
+              mapSections.style('position', 'static');
+              // Hide all the sections 
+              mapSections.style('visibility', 'hidden');
+
+              // Stick and show this section
+              app.displaySection(this.element);
+
+              if (this.element.id == 'filler-2') {
+                // We've scrolled past all the map sections.  Unstick these sections
+                mapSections.style('position', 'static');
+                // Unstick the map layers
+                mapLayers.style('position', 'static');
+                // Make the filler layers zero height so the elements all stay in place
+                // after the fixed elements are no longer fixed position
+                d3.select('#filler-1').style('display', 'none');
+                d3.select('#filler-2').style('display', 'none');
+              }
             }
+          },
+          offset: '100%'
+        });
 
-            // When scrolling down, and the top of a section hits the bottom
-            // of the viewport ...
-            let wp = new Waypoint({
-              element: el,
-              handler: function(direction) {
-                if (direction == 'down') {
-                  // Unstick all the sections 
-                  mapSections.style('position', 'static');
-                  // Hide all the sections 
-                  mapSections.style('visibility', 'hidden');
+        // When scrolling up, and the bottom of a section enters the top
+        // of the viewport ...
+        let reverseWp = new Waypoint({
+          element: el,
+          handler: function(direction) {
+            if (direction == 'up') {
+              if (this.element.id == 'filler-1') {
+                // Scrolling back into the map sections
+                // Make the map layers stick
+                mapLayers.style('position', 'fixed');
+                // Give the filler sections a height so everything sits in the right place
+                d3.select('#filler-1').style('display', 'block');
+                d3.select('#filler-2').style('display', 'block');
+              }
 
-                  // Stick and show this section
-                  app.displaySection(this.element);
-                }
-              },
-              offset: '100%'
-            });
+              // Unstick all the sections
+              mapSections.style('position', 'static');
+              // Hide all the sections
+              mapSections.style('visibility', 'hidden');
 
-            // When scrolling up, and the bottom of a section enters the top
-            // of the viewport ...
-            let reverseWp = new Waypoint({
-              element: el,
-              handler: function(direction) {
-                if (direction == 'up') {
-                  // Unstick all the sections
-                  mapSections.style('position', 'static');
-                  // Hide all the sections
-                  mapSections.style('visibility', 'hidden');
-
-                  // Stick and show this section
-                  app.displaySection(this.element);
-                }
-              },
-              offset: 'bottom-in-view'
-            });
-          });
+              // Stick and show this section
+              app.displaySection(this.element);
+            }
+          },
+          offset: 'bottom-in-view'
+        });
+      });
     }
 
     displaySection(element, position='fixed') {

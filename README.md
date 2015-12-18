@@ -38,7 +38,6 @@ To run a local webserver to view the site, run:
 To do
 -----
 
-* Static map, content changes as user scrolls
 * Render map elements from data using D3
 * Map tiles from tile service
 * Animate drawing of distance line in first section

@@ -18,9 +18,13 @@
             {{> map section=sections.[same-problems-istabl-antwar]}}
             {{> map section=sections.[same-problems-masakin-uthman]}}
 
-            {{> highway section=sections.highway }}
-            {{> context section=sections.context }}
+            {{! These are empty, 100% height elements needed to allow the user to scroll past the last map section with content }}
+            <div id="filler-1" class="section section--map"></div>
+            <div id="filler-2" class="section section--map"></div>
         </div>
+
+        {{> highway section=sections.highway }}
+        {{> context section=sections.context }}
 
         <footer class="footer">
           <div class="footer__inner">
