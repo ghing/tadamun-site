@@ -1,9 +1,0 @@
-.DS_Store
-node_modules
-# Ignore vim swapfiles
-*.swp
-# Ignore images and rights for now, because licenses 
-img
-fonts
-# Ignore generated files
-build
